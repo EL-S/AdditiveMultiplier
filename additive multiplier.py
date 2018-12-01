@@ -1,17 +1,34 @@
-while True:
 
-    a = input("First: ")
-    b = input("Second: ")
-
+def choose_numbers():
     try:
-        a = int(a)
-        b = int(b)
-        break
+
+        amount = int(input("How many numbers?: "))
+        numbers = []
+        for i in range(0,amount):
+            numbers.append(str(int(input("number "+str(i+1)+": ")))) #ensure it can be an int and then convert back to string
+        return numbers
     except:
-        pass
+        print("Please only input integers!")
+        choose_numbers()
 
-total = 0
-for i in range(0,b):
-    total += a
+def multiply(numbers):
+    try:
+        total = int(numbers[0])
+        for counter in range(0,len(numbers)-1):
+            if int(numbers[counter+1]) == 0:
+                total = 0
+            total_partial = total
+            for i in range(0,int(numbers[counter+1])-1):
+                total += total_partial
+        return total
+    except:
+        print("Error Multiplying!")
 
-print(a,"x",b,"=",total)
+
+
+while True:
+    numbers = choose_numbers()
+    str_expression = " x ".join(numbers)+" ="
+    answer = multiply(numbers)
+    print(str_expression,answer)
+    

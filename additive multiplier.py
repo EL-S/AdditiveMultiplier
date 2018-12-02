@@ -13,6 +13,7 @@ def choose_numbers():
 
 def multiply(numbers):
     try:
+        print("Calculating... (this may take some time)")
         total = int(numbers[0])
         for counter in range(0,len(numbers)-1):
             if int(numbers[counter+1]) == 0:
